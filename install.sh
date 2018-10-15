@@ -1,23 +1,25 @@
-echo "Atualizando APT-GET" 
+echo "Atualizando APT-GET"
 
-apt-get update
+#apt-get update
 
 echo "Instalando VirtalBox"
 apt-get install virtualbox
 
-url_vagrant='https://releases.hashicorp.com/vagrant/1.8.1'
+version=$1
 
-echo "Baixando pacote de instalacao Vagrant: versao 1.8.1"
+url_vagrant='https://releases.hashicorp.com/vagrant/'$version
+
+echo "Baixando pacote de instalacao Vagrant: versao "$version
 
 if [ `uname -m` = 'x86_64' ];
 then
-    versao='vagrant_1.8.1_x86_64.deb'
-else 
-    versao='vagrant_1.8.1_i686.deb'
+    package='vagrant_'$version'_x86_64.deb'
+else
+    package='vagrant_'$version'_i686.deb'
 fi
 
-wget $url_vagrant/$versao
-echo $url_vagrant/$versao
+#wget $url_vagrant/$package
+echo $url_vagrant/$package
 
 echo "Instalando Vagrant"
-dpkg -i $versao
+dpkg -i $package
