@@ -18,7 +18,7 @@ else
     package='vagrant_'$version'_i686.deb'
 fi
 
-#wget $url_vagrant/$package
+wget $url_vagrant/$package
 echo $url_vagrant/$package
 
 echo "Instalando Vagrant"
